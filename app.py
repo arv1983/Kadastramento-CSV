@@ -42,7 +42,7 @@ def login():
         return jsonify(FileNotFoundError)
 
 @app.route('/profile/<int:user_id>', methods=['PATCH'])
-def update(user_id):
+def update_user(user_id):
     data = request.json
     data_complete = []
     edit_row = ""
@@ -82,7 +82,7 @@ def update(user_id):
         return ('', 401)
 
 @app.route('/users', methods=['GET'])
-def get():
+def all_users():
     list_data = []
     try:
         with open('users.csv', "r") as f:
@@ -93,7 +93,7 @@ def get():
         return jsonify(FileNotFoundError)
 
 @app.route('/profile/<int:user_id>', methods=['DELETE'])
-def deletes(user_id):
+def delete_users(user_id):
     if(user_id):
         list_data = []
         try:
