@@ -20,7 +20,8 @@ def signup():
             writer = DictWriter(f, fieldnames=headers)
             body = {**data, 'id': int(last_id) + 1}
             writer.writerows([body])
-            f.close()            
+            f.close()
+            body.pop('password')
             return jsonify(body)                        
     except:
         return jsonify(FileNotFoundError)
